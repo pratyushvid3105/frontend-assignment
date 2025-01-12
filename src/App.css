@@ -1,20 +1,291 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fafafa;
+  margin-top: 10px;
+  min-width: 90vw;
+  background-color: #0f0f0f;
+  font-family: "fantasy";
+}
+
+.background-beams-container {
+  height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.background-beams-bottom {
+  position: absolute;
+  bottom: 0;
+  background-color: #f5f5f5;
+  width: 100%;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08),
+    0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.beam-base {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  margin: auto;
+  height: 56px;
+  width: 1px;
+  border-radius: 9999px;
+  background: linear-gradient(to top, #6366f1, #a855f7, transparent);
+}
+
+.h-6 {
+  height: 24px !important;
+}
+
+.h-12 {
+  height: 48px !important;
+}
+
+.h-20 {
+  height: 80px !important;
+}
+
+.explosion-container {
+  position: absolute;
+  z-index: 50;
+  width: 2px;
+  height: 2px;
+}
+
+.explosion-blur {
+  position: absolute;
+  left: -40px;
+  right: -40px;
+  top: 0;
+  margin: auto;
+  height: 2px;
+  width: 80px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, transparent, #6366f1, transparent);
+  filter: blur(4px);
+}
+
+.explosion-span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, #6366f1, #a855f7);
+}
+
+.dashboard-container {
+  background: linear-gradient(to right, #1f2937, #000);
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 5rem 2.5rem;
+}
+
+.dashboard-left {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.dashboard-heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  font-family: "fantasy";
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .dashboard-heading {
+    font-size: 3.75rem;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-text {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  margin-bottom: 2rem;
+  font-family: "fantasy";
+}
+
+.actions-horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.actions-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.action-link {
+  padding: 12px 32px;
+  background-color: #fda560;
+  color: #0f0f0f;
+  font-family: "fantasy";
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: moveUpDown 1s infinite alternate;
+}
+
+.action-link:hover {
+  background-color: #fd8121;
+  transform: scale(1.05);
+}
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.gridGlobeContainer {
+  display: flex;
+  position: absolute;
+  width: 100%;
+}
+
+.gridGlobeInner {
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 384px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.gridGlobeSuspenseContainer {
+  position: absolute;
+  width: 100%;
+  height: 288px;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .gridGlobeSuspenseContainer {
+    height: 100%;
+  }
+}
+
+.table-shimmer-container {
+  width: 100%;
+  background-color: var(--primary-background, #1f1f1f);
+
+  border: 1px solid var(--button-secondary, #3a3a3a);
+
+  border-radius: 0.5rem;
+
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.table-shimmer-overflow {
+  overflow-x: auto;
+}
+
+.table-shimmer-table {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+
+.table-shimmer-thead {
+  background-color: #272727;
+
+  border-bottom: 1px solid var(--button-secondary, #3a3a3a);
+}
+
+.table-shimmer-th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary-font-color, #fff);
+  font-family: "Roboto", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.table-shimmer-div {
+  height: 1rem;
+  background-color: #3f3f46;
+  border-radius: 0.25rem;
+}
+
+.table-shimmer-tr {
+  cursor: pointer;
+}
+
+.table-shimmer-td {
+  padding: 0.75rem 1rem;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  background-color: #0f0f0f;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
 .header {
   text-align: center;
-  background-color: #222;
-  color: #fff;
-  padding: 1rem 0;
   margin-bottom: 2rem;
 }
 
@@ -24,43 +295,53 @@ body {
 }
 
 .table-container {
-  margin-bottom: 1rem;
   overflow-x: auto;
+  margin-bottom: 1rem;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0 auto;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 100%;
 }
 
-table thead {
-  background-color: #f4f4f4;
+thead {
+  background-color: #272727;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-table th,
-table td {
+th,
+td {
   padding: 0.75rem 1rem;
-  text-align: left;
   border-bottom: 1px solid #ddd;
+  text-align: left;
+  color: #e7e7e7;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .pagination {
   display: flex;
+  gap: 0.5rem;
   justify-content: center;
-  margin: 1rem 0;
+  margin-top: 1rem;
+  align-items: center;
 }
 
 .pagination button {
-  border: none;
   padding: 0.5rem 1rem;
-  margin: 0 0.25rem;
-  cursor: pointer;
   background-color: #222;
   color: #fff;
-  transition: background 0.3s;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .pagination button:hover {
@@ -68,6 +349,13 @@ table td {
 }
 
 .pagination button:disabled {
-  background-color: #aaa;
+  background-color: #999;
   cursor: not-allowed;
+}
+
+.page-info {
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  color: #e7e7e7;
+  margin: 0 0.5rem;
 }
